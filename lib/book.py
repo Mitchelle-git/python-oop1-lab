@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 class Book:
-    def __init__(self, title, author, pages, price, genre):
+    def __init__(self, title="", author="", pages=0, price=0.0, genre=""):
+        # Provide default values so tests can instantiate without full args
         self.title = title
         self.author = author
         self.pages = pages
@@ -19,5 +20,4 @@ class Book:
         return self.current_page
 
     def get_info(self):
-        # Make sure this is the last line of the method—no class declaration here!
         return f"'{self.title}' by {self.author}, Genre: {self.genre}, Pages: {self.pages}, Price: ${self.price:.2f}"
