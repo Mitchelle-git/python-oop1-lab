@@ -1,29 +1,38 @@
 class Book:
-    def __init__(self, title="", author="", page_count=0, price=0.0, genre=""):
+    def __init__(self, title, page_count):
         self.title = title
-        self.author = author
-        self.price = price
-        self.genre = genre
-        self.current_page = 1
+        self.page_count = page_count
 
-        # Validate page_count
-        if not isinstance(page_count, int):
-            self.page_count_error = "page_count must be an integer\n"
-            self.page_count = 0
-        else:
-            self.page_count_error = ""
-            self.page_count = page_count
+    
+    @property
+    def title(self):
+        return self._title
 
+    @title.setter
+    def title(self, value):
+        if not isinstance(value, str):
+            print("title must be a string")
+            return
+        if len(value) == 0:
+            print("title cannot be empty")
+            return
+        self._title = value
+
+    
+    @property
+    def page_count(self):
+        return self._page_count
+
+    @page_count.setter
+    def page_count(self, value):
+        if not isinstance(value, int):
+            print("page_count must be an integer")
+            return
+        if value <= 0:
+            print("page_count must be greater than 0")
+            return
+        self._page_count = value
+
+    
     def turn_page(self):
-        """Flip a page"""
-        if self.current_page < self.page_count:
-            self.current_page += 1
-        return "Flipping the page...wow, you read fast!"
-
-    def bookmark_page(self, page_number):
-        if 1 <= page_number <= self.page_count:
-            self.current_page = page_number
-        return self.current_page
-
-    def get_info(self):
-        return f"'{self.title}' by {self.author}, Genre: {self.genre}, Pages: {self.page_count}, Price: ${self.price:.2f}"
+        print("Flipping the page...wow, you read fast!")
