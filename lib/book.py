@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
+
 class Book:
     def __init__(self, title="", author="", page_count=0, price=0.0, genre=""):
+        # Attributes
         self.title = title
         self.author = author
-        self.page_count = page_count  # renamed to match AutoTest
+        self.page_count = page_count if isinstance(page_count, int) else 0
         self.price = price
         self.genre = genre
         self.current_page = 1
